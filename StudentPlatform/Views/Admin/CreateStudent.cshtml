@@ -1,0 +1,29 @@
+﻿@model List<StudentPlatform.Models.Student>
+
+<h2>Students</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Student ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Academic Number</th>
+            <th>Email</th>
+            <th>Password</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@student.StudentId</td>
+                <td>@student.FirstName</td>
+                <td>@student.LastName</td>
+                <td>@student.AcademicNumber</td>
+                <td>@student.Email</td>
+                <td>@student.Password</td>
+            </tr>
+        }
+    </tbody>
+</table>

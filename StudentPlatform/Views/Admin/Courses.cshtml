@@ -1,0 +1,25 @@
+﻿@model List<StudentPlatform.Models.Course>
+
+<h2>Courses</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Course ID</th>
+            <th>Course Name</th>
+            <th>Instructor</th>
+            <th>Schedule</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var course in Model)
+        {
+            <tr>
+                <td>@course.CourseId</td>
+                <td>@course.CourseName</td>
+                <td>@course.Instructor</td>
+                <td>@course.Schedule</td>
+            </tr>
+        }
+    </tbody>
+</table>

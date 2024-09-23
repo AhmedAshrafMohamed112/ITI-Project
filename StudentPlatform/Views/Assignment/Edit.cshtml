@@ -1,0 +1,144 @@
+﻿@model StudentPlatform.Models.Assignment
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url("/images/uni2.jpg"); 
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        color: #fff;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 50px auto;
+        background-color: rgba(0, 0, 0, 0.7); 
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+
+    h2 {
+        color: #007bff;
+        margin-bottom: 20px;
+        font-size: 2.5rem; 
+        font-weight: 900; 
+        text-transform: uppercase; 
+        letter-spacing: 1px; 
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #fff;
+        color: #000;
+    }
+
+    .text-danger {
+        color: #dc3545;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 1rem;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+    }
+
+    .btn:hover {
+        opacity: 0.9;
+    }
+
+    footer {
+        color: #fff;
+        text-align: center;
+        padding: 1rem;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<div class="container">
+    <h2>Edit Assignment</h2>
+
+    <form asp-action="Edit">
+        <input type="hidden" asp-for="AssignmentId" />
+
+        <div class="form-group">
+            <label asp-for="Title" class="control-label"><strong>Title</strong></label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="DueDate" class="control-label"><strong>Deadline</strong></label>
+            <input asp-for="DueDate" class="form-control" />
+            <span asp-validation-for="DueDate" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Description" class="control-label"><strong>Description</strong></label>
+            <textarea asp-for="Description" class="form-control"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="CourseId" class="control-label"><strong>Course</strong></label>
+            <select asp-for="CourseId" class="form-control" asp-items="ViewBag.CourseId"></select>
+            <span asp-validation-for="CourseId" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="AdminId" class="control-label"><strong>Admin</strong></label>
+            <select asp-for="AdminId" class="form-control" asp-items="ViewBag.AdminId"></select>
+            <span asp-validation-for="AdminId" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </div>
+    </form>
+
+    <div>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>
+
+<footer>
+    &copy; 2024 Your University
+</footer>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

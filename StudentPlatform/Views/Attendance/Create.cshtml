@@ -1,0 +1,159 @@
+﻿@model StudentPlatform.Models.Attendance
+
+@{
+    ViewData["Title"] = "Create Attendance";
+}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url("/images/uni2.jpg"); 
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        color: #fff;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 50px auto;
+        background-color: rgba(0, 0, 0, 0.7); 
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+
+    h2 {
+        color: #007bff;
+        margin-bottom: 20px;
+        font-size: 2.5rem; 
+        font-weight: 900; 
+        text-transform: uppercase; 
+        letter-spacing: 1px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        font-size: 1rem;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        color: #000;
+    }
+
+    .text-danger {
+        color: #dc3545;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 1rem;
+        font-weight: 700;
+        text-align: center;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        color: #fff;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+    .notice {
+        padding: 10px;
+        margin-bottom: 20px;
+        background-color: rgba(255, 0, 0, 0.7); 
+        color: #fff;
+        border-radius: 5px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    h1 {
+        color: #007bff; 
+    }
+
+    footer {
+        color: #fff;
+        text-align: center;
+        padding: 1rem;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<h1><strong>Create Attendance</strong></h1>
+
+<hr />
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="Date" class="control-label"><strong>Date</strong></label>
+        <input asp-for="Date" class="form-control" />
+        <span asp-validation-for="Date" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="IsPresent" class="control-label"><strong>Presence</strong></label>
+        <div>
+            <label>
+                <input type="radio" asp-for="IsPresent" value="true" /> <strong>Present</strong>
+            </label>
+            <label>
+                <input type="radio" asp-for="IsPresent" value="false" /> <strong>Absent</strong>
+            </label>
+        </div>
+        <span asp-validation-for="IsPresent" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="StudentId" class="control-label"><strong>Student</strong></label>
+        <select asp-for="StudentId" class="form-control" asp-items="ViewBag.StudentId"></select>
+        <span asp-validation-for="StudentId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CourseId" class="control-label"><strong>Course</strong></label>
+        <select asp-for="CourseId" class="form-control" asp-items="ViewBag.CourseId"></select>
+        <span asp-validation-for="CourseId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="AdminId" class="control-label"><strong>Admin</strong></label>
+        <select asp-for="AdminId" class="form-control" asp-items="ViewBag.AdminId"></select>
+        <span asp-validation-for="AdminId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
+
+<a href="@Url.Action("Index")" class="btn btn-secondary"><strong>Back to List</strong></a>

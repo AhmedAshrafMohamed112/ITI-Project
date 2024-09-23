@@ -1,0 +1,110 @@
+﻿@model StudentPlatform.Models.Lecture
+
+<h2>Edit Lecture</h2>
+
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url("/images/uni2.jpg"); 
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        color: #fff;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 50px auto;
+        background-color: rgba(0, 0, 0, 0.7); 
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+
+    h2 {
+        color: #007bff;
+        margin-bottom: 20px;
+        font-size: 2.5rem; 
+        font-weight: 900; 
+        text-transform: uppercase; 
+        letter-spacing: 1px; 
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    table, th, td {
+        border: 1px solid #ddd;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    tr:nth-child(even) {
+        background-color: rgba(255, 255, 255, 0.1); 
+    }
+
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+    .notice {
+        padding: 10px;
+        margin-bottom: 20px;
+        background-color: rgba(255, 0, 0, 0.7); 
+        color: #fff;
+        border-radius: 5px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    footer {
+        color: #fff;
+        text-align: center;
+        padding: 1rem;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="LectureId" />
+    <div class="form-group">
+        <label asp-for="Title" class="bold-label"></label>
+        <input asp-for="Title" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="MaterialUrl" class="bold-label"></label>
+        <input asp-for="MaterialUrl" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Date" class="bold-label"></label>
+        <input asp-for="Date" type="date" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="CourseId" class="bold-label">Course</label>
+        <select asp-for="CourseId" asp-items="@(new SelectList(ViewBag.Courses, "CourseId", "CourseName"))" class="form-control"></select>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>

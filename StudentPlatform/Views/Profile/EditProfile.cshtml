@@ -1,0 +1,196 @@
+﻿@model StudentPlatform.Models.Student
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 30px auto; 
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        h2 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: bold;
+            }
+
+            .form-group input {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+            }
+
+            .form-group button {
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                border-radius: 4px;
+                padding: 10px 20px;
+                cursor: pointer;
+                font-size: 1em;
+            }
+
+                .form-group button:hover {
+                    background-color: #0056b3;
+                }
+
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+
+        body {
+            background-image: url("/images/uni2.jpg"); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        .custom-card-header {
+            font-size: 2.5rem; 
+            font-weight: 900; 
+            color: #007bff; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+        }
+
+        .custom-card {
+            background-color: rgba(0, 0, 0, 0.5); 
+            padding: 2rem; 
+            width: 100%; 
+            max-width: 600px; 
+            margin: auto; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
+            color: #fff;
+        }
+
+        .form-control {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2><strong>Edit Profile</strong></h2>
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+
+        <form asp-action="EditProfile" method="post">
+            <input type="hidden" asp-for="StudentId" />
+
+            <div class="form-group">
+                <label asp-for="FirstName"><strong>First Name</strong></label>
+                <input asp-for="FirstName" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="LastName"><strong>Last Name</strong></label>
+                <input asp-for="LastName" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Email"><strong>Email</strong></label>
+                <input asp-for="Email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password"><strong>Password</strong></label>
+                <input type="password" asp-for="Password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="AcademicNumber"><strong>Academic Number</strong></label>
+                <input asp-for="AcademicNumber" />
+                <span asp-validation-for="AcademicNumber" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DateOfBirth"><strong>Date of Birth</strong></label>
+                <input type="date" asp-for="DateOfBirth" />
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PlaceOfBirth"><strong>Place of Birth</strong></label>
+                <input asp-for="PlaceOfBirth" />
+                <span asp-validation-for="PlaceOfBirth" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Nationality"><strong>Nationality</strong></label>
+                <input asp-for="Nationality" />
+                <span asp-validation-for="Nationality" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Gender"><strong>Gender</strong></label>
+                <input asp-for="Gender" />
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Religion"><strong>Religion</strong></label>
+                <input asp-for="Religion" />
+                <span asp-validation-for="Religion" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <button type="submit">Save</button>
+                <a href="@Url.Action("ViewProfile", "Profile")" class="btn btn-secondary">Back to Profile</a>
+
+            </div>
+
+        </form>
+    </div>
+
+</body>
+</html>
+

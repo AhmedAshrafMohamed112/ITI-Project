@@ -1,0 +1,65 @@
+﻿@model StudentPlatform.Models.Assignment
+
+@{
+    ViewData["Title"] = "Create Assignment";
+}
+
+<style>
+    .bold-label {
+        font-weight: bold;
+    }
+</style>
+
+<h1>Create Assignment</h1>
+
+<h4>Assignment</h4>
+<hr />
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="Title" class="bold-label control-label"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DueDate" class="bold-label control-label">Deadline</label>
+        <input asp-for="DueDate" class="form-control" />
+        <span asp-validation-for="DueDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description" class="bold-label control-label"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CourseId" class="bold-label control-label"></label>
+        <select asp-for="CourseId" class="form-control">
+            <option value="">Select a Course</option>
+            @foreach (var course in ViewBag.Courses as List<StudentPlatform.Models.Course>)
+            {
+                <option value="@course.CourseId">@course.CourseName</option>
+            }
+        </select>
+        <span asp-validation-for="CourseId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="AdminId" class="bold-label control-label"></label>
+        <select asp-for="AdminId" class="form-control">
+            <option value="">Select an Admin</option>
+            @foreach (var admin in ViewBag.Admins as List<StudentPlatform.Models.Admin>)
+            {
+                <option value="@admin.AdminId">@admin.AdminName</option>
+            }
+        </select>
+        <span asp-validation-for="AdminId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
+
+<a href="@Url.Action("Index")" class="btn btn-secondary">Back to List</a>

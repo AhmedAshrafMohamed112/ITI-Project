@@ -1,0 +1,33 @@
+﻿@model List<StudentPlatform.Models.Student>
+
+@{
+    ViewData["Title"] = "Student List";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Academic Number</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@student.StudentId</td>
+                <td>@student.FirstName</td>
+                <td>@student.LastName</td>
+                <td>@student.Email</td>
+                <td>@student.Password</td>
+                <td>@student.AcademicNumber</td>
+            </tr>
+        }
+    </tbody>
+</table>

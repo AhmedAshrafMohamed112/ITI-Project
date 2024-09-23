@@ -1,0 +1,171 @@
+﻿@model StudentPlatform.Models.Student
+
+@{
+    ViewData["Title"] = "Create Student";
+}
+
+<h2>Create Student</h2>
+
+@if (Model != null)
+{
+    <p><strong>Student Summary:</strong> @Model.ToString()</p>
+}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url("/images/uni2.jpg"); 
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        color: #fff;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 50px auto;
+        background-color: rgba(0, 0, 0, 0.7); 
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+
+    h2 {
+        color: #007bff;
+        margin-bottom: 20px;
+        font-size: 2.5rem; 
+        font-weight: 900; 
+        text-transform: uppercase; 
+        letter-spacing: 1px; 
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    table, th, td {
+        border: 1px solid #ddd;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    tr:nth-child(even) {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+    .notice {
+        padding: 10px;
+        margin-bottom: 20px;
+        background-color: rgba(255, 0, 0, 0.7); 
+        color: #fff;
+        border-radius: 5px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    footer {
+        color: #fff;
+        text-align: center;
+        padding: 1rem;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label class="bold-label">First Name</label> 
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label class="bold-label">Last Name</label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label class="bold-label">Academic Number</label>
+        <input asp-for="AcademicNumber" class="form-control" />
+        <span asp-validation-for="AcademicNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label class="bold-label">Email</label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label class="bold-label">Password</label>
+        <input asp-for="Password" class="form-control" type="password" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label class="bold-label">Date of Birth</label>
+        <input asp-for="DateOfBirth" class="form-control" type="date" />
+        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label class="bold-label">Gender</label>
+        <select asp-for="Gender" class="form-control">
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
+        <span asp-validation-for="Gender" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label class="bold-label">ID or Passport Number</label>
+        <input asp-for="IdOrPassportNumber" class="form-control" />
+        <span asp-validation-for="IdOrPassportNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label class="bold-label">Nationality</label>
+        <input asp-for="Nationality" class="form-control" />
+        <span asp-validation-for="Nationality" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label class="bold-label">Place of Birth</label>
+        <input asp-for="PlaceOfBirth" class="form-control" />
+        <span asp-validation-for="PlaceOfBirth" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label class="bold-label">Religion</label>
+        <input asp-for="Religion" class="form-control" />
+        <span asp-validation-for="Religion" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

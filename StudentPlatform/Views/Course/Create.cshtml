@@ -1,0 +1,149 @@
+﻿@model StudentPlatform.Models.Course
+
+@{
+    ViewData["Title"] = "Create Course";
+}
+
+<h2>Create New Course</h2>
+
+@if (Model != null)
+{
+    <p><strong>Course Summary:</strong> @Model.ToString()</p>
+}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url("/images/uni2.jpg"); 
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        color: #fff;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 50px auto;
+        background-color: rgba(0, 0, 0, 0.7); 
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+
+    h2 {
+        color: #007bff;
+        margin-bottom: 20px;
+        font-size: 2.5rem; 
+        font-weight: 900;
+        text-transform: uppercase; 
+        letter-spacing: 1px; 
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        font-size: 1rem;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        color: #000;
+    }
+
+    .text-danger {
+        color: #dc3545;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 1rem;
+        font-weight: 700;
+        text-align: center;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        color: #fff;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+    .notice {
+        padding: 10px;
+        margin-bottom: 20px;
+        background-color: rgba(255, 0, 0, 0.7); 
+        color: #fff;
+        border-radius: 5px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    footer {
+        color: #fff;
+        text-align: center;
+        padding: 1rem;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<div class="container">
+    <form asp-action="Create" method="post">
+        <div class="form-group">
+            <label asp-for="CourseName" class="control-label bold-label">Course Name</label>
+            <input asp-for="CourseName" class="form-control" />
+            <span asp-validation-for="CourseName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Instructor" class="control-label bold-label">Instructor</label>
+            <input asp-for="Instructor" class="form-control" />
+            <span asp-validation-for="Instructor" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Schedule" class="control-label bold-label">Schedule</label>
+            <input asp-for="Schedule" class="form-control" />
+            <span asp-validation-for="Schedule" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </form>
+
+    <div>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

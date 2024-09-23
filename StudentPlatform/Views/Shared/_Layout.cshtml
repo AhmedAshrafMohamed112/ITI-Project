@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - StudentPlatform</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/StudentPlatform.styles.css" asp-append-version="true" />
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        header {
+            background-color: rgba(255, 255, 255, 0); 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            padding: 0.5rem 1rem;
+            background-color: rgba(255, 255, 255, 0); 
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+        }
+
+            .navbar-brand img {
+                max-height: 50px;
+                margin-right: 0.5rem;
+            }
+
+            .navbar-brand span {
+                font-size: 1.5rem;
+                font-weight: bold;
+                color: #007bff;
+            }
+
+                .navbar-brand span:hover {
+                    color: #0056b3;
+                }
+
+        .navbar-nav .nav-link,
+        .navbar-nav .btn {
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
+        .navbar-nav .btn-outline-success {
+            color: #007bff;
+            border-color: #007bff;
+            background-color: transparent;
+        }
+
+            .navbar-nav .btn-outline-success:hover {
+                color: #fff;
+                background-color: #007bff;
+                border-color: #007bff;
+            }
+
+        .navbar-nav .btn-outline-danger {
+            color: #dc3545;
+            border-color: #dc3545;
+            background-color: transparent;
+        }
+
+            .navbar-nav .btn-outline-danger:hover {
+                color: #fff;
+                background-color: #dc3545;
+                border-color: #dc3545;
+            }
+
+        .navbar-text {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #007bff;
+            border: 1px solid #007bff;
+            border-radius: 0.25rem;
+            padding: 0.25rem 0.5rem;
+            background-color: transparent;
+            margin-right: 1rem;
+            transition: border-color 0.3s, color 0.3s;
+        }
+
+            .navbar-text:hover {
+                border-color: #0056b3;
+                color: #0056b3;
+            }
+
+        footer {
+            background-color: rgba(255, 255, 255, 0); 
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+
+        }
+        nav{
+            padding-top: 0;
+        }
+            footer a {
+                color: #007bff;
+                text-decoration: none;
+                font-weight: 600;
+            }
+
+                footer a:hover {
+                    text-decoration: underline;
+                }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="https://www.universitiesegypt.com/ImageHandler.ashx?Id=12795&SS=159ab377164e5df82dc477b31de8d4c6" alt="Logo" />
+                    <span>USC Platform</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1"></ul>
+                    <ul class="navbar-nav navbar-right">
+                        @if (Context.Session.GetInt32("StudentId") == null && Context.Session.GetInt32("AdminId") == null)
+                        {
+                            <li class="nav-item">
+                                <button class="btn btn-outline-success" onclick="window.location.href='/account/login'">Login</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="btn btn-outline-success" onclick="window.location.href='/account/register'">Register</button>
+                            </li>
+                        }
+                        else if (Context.Session.GetInt32("StudentId") != null)
+                        {
+                            <li class="nav-item">
+                                <label class="navbar-text">@Context.Session.GetString("StudentName")</label>
+                            </li>
+                            <li class="nav-item">
+                                <button class="btn btn-outline-danger" onclick="window.location.href='/account/logout'">Logout</button>
+                            </li>
+                        }
+                        else if (Context.Session.GetInt32("AdminId") != null)
+                        {
+                            <li class="nav-item">
+                                <label class="navbar-text">@Context.Session.GetString("AdminName")</label>
+                            </li>
+                            <li class="nav-item">
+                                <button class="btn btn-outline-danger" onclick="window.location.href='/account/logout'">Logout</button>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        @if (TempData["Message"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["Message"]
+            </div>
+        }
+
+        @RenderBody()
+    </div>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container text-center">
+            &copy; 2024 - StudentPlatform - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

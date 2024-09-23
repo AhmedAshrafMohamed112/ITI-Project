@@ -1,0 +1,64 @@
+﻿@model StudentPlatform.Models.Student
+
+@{
+    ViewBag.Title = "Enroll Student";
+    var courses = ViewBag.Courses as IEnumerable<StudentPlatform.Models.Course>;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enroll Student</title>
+    <style>
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Enroll Student</h2>
+
+        @if (TempData["Message"] != null)
+        {
+            <div class="alert">
+                @TempData["Message"]
+            </div>
+        }
+
+        <form asp-action="EnrollStudent" method="post">
+            <input type="hidden" name="StudentId" value="@Model.StudentId" />
+
+            <div class="form-group">
+                <label for="FirstName">First Name</label>
+                <input type="text" id="FirstName" name="FirstName" value="@Model.FirstName" readonly />
+            </div>
+
+            <div class="form-group">
+                <label for="AcademicNumber">Academic Number</label>
+                <input type="text" id="AcademicNumber" name="AcademicNumber" value="@Model.AcademicNumber" readonly />
+            </div>
+
+            <div class="form-group">
+                <label>Select Courses</label>
+                @foreach (var course in courses)
+                {
+                    <div>
+                        <input type="checkbox" name="CourseIds" value="@course.CourseId" />
+                        <label>@course.CourseName</label>
+                    </div>
+                }
+            </div>
+
+            <div class="form-group">
+                <button type="submit">Enroll</button>
+            </div>
+        </form>
+
+        <div>
+            <a href="@Url.Action("", "Admin")">Back to Dashboard</a>
+        </div>
+    </div>
+
+</body>
+</html>

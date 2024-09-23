@@ -1,0 +1,113 @@
+﻿@model RejStudentVM
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rejestor Registration</title>
+    <style>
+        body {
+            background-image: url("/images/uni2.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        .custom-card-header {
+            font-size: 2.5rem; 
+            font-weight: 900; 
+            color: #007bff; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+        }
+
+        .custom-card {
+            background-color: rgba(0, 0, 0, 0.5); 
+            padding: 2rem; 
+            width: 100%; 
+            max-width: 600px; 
+            margin: auto; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
+            color: #fff; 
+            margin-top: -3rem;
+        }
+
+        .form-control {
+            background-color: rgba(255, 255, 255, 0.5); 
+            border: 1px solid rgba(255, 255, 255, 0.5); 
+            color: #000; 
+        }
+
+        .btn-primary {
+            background-color: rgba(0, 123, 255, 0.8); 
+            border-color: rgba(0, 123, 255, 0.8); 
+        }
+
+            .btn-primary:hover {
+                background-color: rgba(0, 123, 255, 1); 
+                border-color: rgba(0, 123, 255, 1); 
+            }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="card shadow-sm custom-card">
+                    <div class="card-header text-center custom-card-header">
+                        <h4 class="mb-0"><strong>Registration</strong></h4>
+                    </div>
+                    <div class="card-body">
+                        <form asp-action="Register" asp-controller="Account" method="post">
+                            <div asp-validation-summary="All" class="text-danger"></div>
+
+                            <div class="mb-3">
+                                <label asp-for="FirstName" class="form-label"><strong>First Name</strong></label>
+                                <input class="form-control form-control-lg" asp-for="FirstName" />
+                                <span asp-validation-for="FirstName" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="LastName" class="form-label"><strong>Last Name</strong></label>
+                                <input class="form-control form-control-lg" asp-for="LastName" />
+                                <span asp-validation-for="LastName" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="AcademicNumber" class="form-label"><strong>Academic Number</strong></label>
+                                <input class="form-control form-control-lg" asp-for="AcademicNumber" />
+                                <span asp-validation-for="AcademicNumber" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Email" class="form-label"><strong>Email</strong></label>
+                                <input class="form-control form-control-lg" asp-for="Email" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Password" class="form-label"><strong>Password</strong></label>
+                                <input class="form-control form-control-lg" asp-for="Password" type="password" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="ConfirmPassword" class="form-label"><strong>Confirm Password</strong></label>
+                                <input class="form-control form-control-lg" asp-for="ConfirmPassword" type="password" />
+                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

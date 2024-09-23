@@ -1,0 +1,111 @@
+﻿@{
+    ViewBag.Title = "Student Dashboard";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <style>
+        body {
+            padding-top: 50px;
+            background-image: url("/images/uni2.jpg"); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .card {
+            margin: 20px 0;
+            background-color: rgba(255, 255, 255, 0.8); 
+        }
+
+        .dashboard-header {
+            text-align: center;
+            color: #007bff;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); 
+        }
+
+        .card-title {
+            color: #007bff;
+        }
+
+        .card-text {
+            color: #6c757d; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="dashboard-header">Student Dashboard</h1>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>View Profile</strong></h5>
+                        <p class="card-text">View and update your profile information.</p>
+                        <a href="@Url.Action("ViewProfile", "Profile")" class="btn btn-primary">Go to Profile</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>View Courses</strong></h5>
+                        <p class="card-text">See the courses you are enrolled in and their details.</p>
+                        <a href="@Url.Action("ViewCourses", "Course")" class="btn btn-primary">Go to Courses</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>View Lectures</strong></h5>
+                        <p class="card-text">Access lecture notes and schedules.</p>
+                        <a href="@Url.Action("ViewLectures", "Lecture")" class="btn btn-primary">Go to Lectures</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>View Assignments</strong></h5>
+                        <p class="card-text">Check your assignments, deadlines, and submission status.</p>
+                        <a href="@Url.Action("ViewAssignments", "Assignment")" class="btn btn-primary">Go to Assignments</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>View Grades</strong></h5>
+                        <p class="card-text">Check your grades and feedback from instructors.</p>
+                        <a href="@Url.Action("ViewGrades", "Grades")" class="btn btn-primary">Go to Grades</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>View Attendance</strong></h5>
+                        <p class="card-text">Track your attendance records and patterns.</p>
+                        <a href="@Url.Action("ViewAttendance", "Attendance")" class="btn btn-primary">Go to Attendance</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

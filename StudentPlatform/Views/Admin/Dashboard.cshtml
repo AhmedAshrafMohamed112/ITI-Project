@@ -1,0 +1,101 @@
+﻿@{
+    ViewBag.Title = "Admin Dashboard";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <style>
+        body {
+            padding-top: 50px;
+            background-image: url("/images/uni2.jpg"); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .card {
+            margin: 20px 0;
+            background-color: rgba(255, 255, 255, 0.8); 
+        }
+
+        .dashboard-header {
+            text-align: center;
+            color: #007bff;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); 
+        }
+
+        .card-title {
+            color: #007bff;
+        }
+
+        .card-text {
+            color: #6c757d; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="dashboard-header">Admin Dashboard</h1>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>Manage Students</strong></h5>
+                        <p class="card-text">View, add, update, or delete student records.</p>
+                        <a href="@Url.Action("Index", "Student")" class="btn btn-primary">Go to Students</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>Manage Courses</strong></h5>
+                        <p class="card-text">View, add, update, or delete course details.</p>
+                        <a href="@Url.Action("Index", "Course")" class="btn btn-primary">Go to Courses</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>Manage Lectures</strong></h5>
+                        <p class="card-text">Manage lecture schedules and information.</p>
+                        <a href="@Url.Action("Index", "Lecture")" class="btn btn-primary">Go to Lectures</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>Manage Assignments</strong></h5>
+                        <p class="card-text">View, assign, and manage assignment submissions.</p>
+                        <a href="@Url.Action("Index", "Assignment")" class="btn btn-primary">Go to Assignments</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>Manage Attendance</strong></h5>
+                        <p class="card-text">Track and manage student attendance records.</p>
+                        <a href="@Url.Action("Index", "Attendance")" class="btn btn-primary">Go to Attendance</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

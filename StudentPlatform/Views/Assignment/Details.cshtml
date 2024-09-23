@@ -1,0 +1,209 @@
+﻿@model StudentPlatform.Models.Assignment
+
+@{
+    ViewData["Title"] = "Assignment Details";
+}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url("/images/uni2.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        color: #fff;
+    }
+
+
+    .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 50px auto;
+        background-color: rgba(0, 0, 0, 0.7); 
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+
+    h1 {
+        color: #007bff; 
+        font-weight: bold; 
+    }
+
+    h2 {
+        color: #007bff;
+        margin-bottom: 20px;
+        font-size: 2.5rem; 
+        font-weight: 900; 
+        text-transform: uppercase; 
+        letter-spacing: 1px; 
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    table, th, td {
+        border: 1px solid #ddd;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    tr:nth-child(even) {
+        background-color: rgba(255, 255, 255, 0.1); 
+    }
+
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+    .notice {
+        padding: 10px;
+        margin-bottom: 20px;
+        background-color: rgba(255, 0, 0, 0.7); 
+        color: #fff;
+        border-radius: 5px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    footer {
+        color: #fff;
+        text-align: center;
+        padding: 1rem;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<h1>Assignment Details</h1>
+
+<div class="container">
+    <h4><strong>Assignment</strong></h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Assignment ID
+        </dt>
+        <dd class="col-sm-10">
+            @Model.AssignmentId
+        </dd>
+
+        <dt class="col-sm-2">
+            Title
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Title
+        </dd>
+
+        <dt class="col-sm-2">
+            Description
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Description
+        </dd>
+
+        <dt class="col-sm-2">
+            Due Date
+        </dt>
+        <dd class="col-sm-10">
+            @Model.DueDate.ToShortDateString()
+        </dd>
+
+        <dt class="col-sm-2">
+            Course
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Course?.CourseName
+        </dd>
+
+        <dt class="col-sm-2">
+            Admin
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Admin?.AdminName
+        </dd>
+    </dl>
+</div>
+
+<div class="container">
+    <h4><strong>Grades</strong></></h4>
+    @if (Model.Grades.Any())
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Student</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var grade in Model.Grades)
+                {
+                    <tr>
+                        <td>@grade.Student?.FirstName</td> 
+                        <td>@grade.Score</td> 
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No grades available.</p>
+    }
+</div>
+
+<div class="container">
+    <h4><strong>Submissions</strong></h4>
+    @if (Model.Submissions.Any())
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Student</th>
+                    <th>Submitted At</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var submission in Model.Submissions)
+                {
+                    <tr>
+                        <td>@submission.Student?.FirstName</td> 
+                        <td>@submission.SubmittedAt.ToShortDateString()</td> 
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No submissions available.</p>
+    }
+</div>
+
+<div class="container">
+    <a asp-action="Index" class="btn btn-primary">Back to List</a>
+</div>
+
+<footer>
+    © 2024 Your Institution Name
+</footer>

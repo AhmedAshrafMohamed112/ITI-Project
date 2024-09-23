@@ -1,0 +1,131 @@
+﻿@model StudentPlatform.Models.Course
+
+@{
+    ViewData["Title"] = "Edit Course";
+}
+
+<h2>Edit Course</h2>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url("/images/uni2.jpg"); 
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        color: #fff;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 50px auto;
+        background-color: rgba(0, 0, 0, 0.7); 
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+
+    h2 {
+        color: #007bff;
+        margin-bottom: 20px;
+        font-size: 2.5rem; 
+        font-weight: 900; 
+        text-transform: uppercase; 
+        letter-spacing: 1px; 
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #fff;
+        color: #000;
+    }
+
+    .text-danger {
+        color: #dc3545;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 1rem;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+    }
+
+    .btn:hover {
+        opacity: 0.9;
+    }
+
+    footer {
+        color: #fff;
+        text-align: center;
+        padding: 1rem;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<div class="container">
+    <form asp-action="Edit" method="post">
+        <div class="form-group">
+            <label asp-for="CourseName" class="control-label bold-label">Course Name</label>
+            <input asp-for="CourseName" class="form-control" />
+            <span asp-validation-for="CourseName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Instructor" class="control-label bold-label">Instructor</label>
+            <input asp-for="Instructor" class="form-control" />
+            <span asp-validation-for="Instructor" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Schedule" class="control-label bold-label">Schedule</label>
+            <input asp-for="Schedule" class="form-control" />
+            <span asp-validation-for="Schedule" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Save Changes" class="btn btn-primary" />
+        </div>
+    </form>
+
+    <div>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>
+
+<footer>
+    &copy; 2024 Your University
+</footer>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
